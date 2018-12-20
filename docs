@@ -150,10 +150,12 @@ If you do not know on which host port a container is exposed simply just:
 --rm = automatically removes the container when the process exists
 
 #docker start -ai CONTAINER (start a stopped container)
+
 #docker exec -it CONTAINER (run command in a running container)
 #docker exec  CONTAINER command
 #docker exec -d -w /temp ubuntu_bash touch my_file.sh
-#docker exec CONTAINER cat /etc/hostname (/bin/echo 'Hello world')
+#docker exec CONTAINER cat /etc/hostname  (/bin/echo 'Hello world')
+#docker exec -it -u 0 <container-id> bash (enter a running container as root) 
 
 
 -a         = Attach to `STDIN`, `STDOUT` and/or `STDERR`
@@ -209,8 +211,10 @@ REMOVE or STOP containers:
 
 When you install Docker, it creates three networks automatically – Bridge (default), Null and Host. 
 
- If you would like to attach the container with any other network specify the network information using the network command line parameter .
+If you would like to attach the container with any other network specify the network information using the network command line parameter .
 
+ All containers are in the same sub-vpn 172.17.0.1/16
+ 
 #docker run --network=host ubuntu
 #docker network ls
 #docker network create backend-network 
