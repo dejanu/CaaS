@@ -77,13 +77,42 @@ $ kubectl get deployments
 $ kubectl config view
 $ kubectl get services (  Service can be exposed by type in ServiceSpec--type NodePort, Cluster IP, LoadBalancer
 
-Chapter9: Services and kube-proxy
 
-- Service = logically group pods and a policy to access them, due to the fact that the Pods are ephemeral (a new pod will have a new IP address) . The grouping is achieved by using Labels and Selectors
-- kind: Service; apiVersion: v1; metadata: name: frontend-svc; spec: selector: app: frontend
-- we are creating a frontend-svc Service by selecting all the Pods that have the Label app set to the frontend. The services gets an IP address 172.17.0.4 aka Cluster IP
-- the Service also does load balancing 
-- ServiceType: CluserIP (default service type, the service gets VirtualIP) or NodePort (VirtualIP + port useful for external access) or LoadBalancer or ExternalIP (route to one or more worker nodes)
+9.Chapter: Services
+
+Service = k8s obj that logically groups pods and a policy to access them (using labels and selectors app == frontend)
+
+provide:
+- common access points to the pods from external.
+- load balancing for pods by selecting the pods for forwarding trafic
+
+
+Pods are ephemeral, they don't have self-healing mechanism, the controller creates new pods.
+
+Service name - name for group of pods e.g:
+
+service name:
+	frontend-svc
+selectors:
+	app==frontend (label app has value frontend)
+
+
+- By default each service get an IP address VIP which is routable inside the cluster aka ClusterIP 
+
+- Service endpoint (pods_IP:port)
+
+Service discovery at runtime via:
+* ENV vars
+* DNS (my-svc.my-namespace.svc.cluster.local)
+
+ServiceType:
+
+- ClusterIP (default one)
+- NodePort (ClusterIP + a port from range 30000- 32767, makes service available for external)
+- LoadBalancer
+- ExternalIP
+- ExternalName
+
 
 
 - Kube-proxy = daemon which runs on workers and manages the IP-tables .
@@ -91,7 +120,7 @@ Chapter9: Services and kube-proxy
 - Service discovery (done at runtime)
    * ENV variables
    * DNS : my-svc.my-namespace.svc.cluster.local
-
+-------------------------------------------------------------------------------------------------------------------------------------
 Openshift:
 
 ! PODS can talk between each other using ingress
