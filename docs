@@ -118,7 +118,7 @@ ADD vs COPY in Dockerfile = ADD allows  to extract a local tar file into a speci
 
 Docker Multistage =  you use multiple FROM statements in your Dockerfile
 
-Copy files in/from container = ?
+Copy files in/from container = using bind-mounts (-v) and volume (--mount type=volume)
 
 Containers = based on linux namespaces and cgroups
 
@@ -161,11 +161,28 @@ If you do not know on which host port a container is exposed simply just:
 -d         = detach 
 -w         = specify the working dir
 
-Binding directories (volumes) is done using the option -v <host-dir>:<container-dir>
+Bind-mount vs volume:
+
+1) Bind-mount = file/dir from host referenced by full path on the host machine, bind-mount can be modified by any process besides Docker
+. The advantage is that if the file/dir doesn't exist on host , docker engine will create the dir on container host
 
 # docker run -p 80:8080 -v /opt/jenkins_data:/var/jenkins_home jenkins
 # docker run -p 80:8080 -v $PWD:/var/jenkins_home jenkins
+# docker run --mount type=bindfa
+,source=/opt/jenkins_data,target=/var/jenkins_home jenkins
 
+2) Volume = the host filesystem also stores volumes, but the difference is that Docker completely manages them and stores them under \docker\volumes
+docker’s storage directory on the host machine
+
+# docker run --mount type=volume,source=/opt/jenkins_data,target=/var/jenkins_home jenkins
+
+
+
+$ docker run -d \
+  -it \
+  --name devtest \
+  --mount type=bind,source="$(pwd)"/target,target=/app \
+  nginx:latest
 
 
 Build images 
