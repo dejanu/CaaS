@@ -1,0 +1,13 @@
+--- 
+apiVersion: v1
+kind: Pod
+metadata: 
+  labels: 
+    app: myapp
+    type: api
+  name: myapp-pod
+spec: 
+  containers: 
+    - 
+      image: dejanualex/gohello
+      name: gohello
