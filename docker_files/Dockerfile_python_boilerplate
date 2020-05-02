@@ -1,0 +1,13 @@
+FROM python:3.4-alpine
+
+# ADD can fetch URL and unpack archieves and COPY them intro a specific location into Docker image
+# also destination path is automatically created if it doesn't exist
+ADD . /usr/src/alex_project
+
+# Set current working directory to desired my_app_directory
+WORKDIR /usr/src/alex_project
+
+RUN pip install -r requirements.txt
+
+CMD ["python", "app.py"]
+
