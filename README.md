@@ -8,6 +8,13 @@ hello app repo js
 ```bash
 docker build -t gcr.io/PROJECT_ID/hello-node:v1 .
 docker run -d -p 8080:8080 gcr.io/PROJECT_ID/hello-node:v1
+
+# set credentials
 gcloud auth configure-docker
-docker push gcr.io/PROJECT_ID/hello-node:v1
+
+#tag image
+docker tag gcr.io/google-samples/hello-app:1.0 gcr.io/PROJECT_ID/quickstart-image:tag1
+
+#push image
+docker push gcr.io/PROJECT_ID/quickstart-image:tag1
 ```
