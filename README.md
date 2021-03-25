@@ -1,11 +1,13 @@
 # miniature-lamp
-hello app python
+hello app repo js
 
-# Start flask server:
-`python app.py`
+# start app:
+`node server.js`
 
-# Build image:
-`docker build -t dejanu/hell_python:1 .`
-
-# Start container:
-`docker run -d -p 5555:5555 dejanu/hell_python:1`
+# Build&Push image to gcr.io:
+```bash
+docker build -t gcr.io/PROJECT_ID/hello-node:v1 .
+docker run -d -p 8080:8080 gcr.io/PROJECT_ID/hello-node:v1
+gcloud auth configure-docker
+docker push gcr.io/PROJECT_ID/hello-node:v1
+```

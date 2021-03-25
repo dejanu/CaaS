@@ -1,15 +1,4 @@
-
-FROM python:3-alpine
-
-# We copy just the requirements.txt first to leverage Docker cache
-COPY ./requirements.txt /app/requirements.txt
-
-WORKDIR /app
-
-RUN pip install -r requirements.txt
-
-COPY . /app
-
-ENTRYPOINT [ "python" ]
-
-CMD [ "app.py" ]
+FROM node:6.9.2
+EXPOSE 8080
+COPY server.js .
+CMD node server.js
