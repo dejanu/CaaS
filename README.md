@@ -3,14 +3,15 @@ hello app goi
 
 
 # Start app:
-`go run hello-world.go`
+`go run main.go`
 
 # Compile app to execute it as binary:
-`go build hello-world.go`
+`go build main.go`
 
 # Build image:
 ```bash
-docker build -t dejanu/hell_python:1 .
+$ docker build -t my-go-app .
+$ docker run -d -p 8080:8081 my-go-app
 
 # set credentials
 gcloud auth configure-docker
