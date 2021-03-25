@@ -1,8 +1,12 @@
 # miniature-lamp
-hello app python
+hello app goi
 
-# Start flask server:
-`python app.py`
+
+# Start app:
+`go run hello-world.go`
+
+# Compile app to execute it as binary:
+`go build hello-world.go`
 
 # Build image:
 ```bash
