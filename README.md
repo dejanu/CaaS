@@ -8,6 +8,9 @@ hello app python
 ```bash
 docker build -t dejanu/hell_python:1 .
 
+# set credentials
+gcloud auth configure-docker
+
 #tag image
 docker tag gcr.io/google-samples/hello-app:1.0 gcr.io/PROJECT_ID/quickstart-image:tag1
 
