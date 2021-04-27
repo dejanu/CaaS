@@ -1,0 +1,5 @@
+# to allow machine update
+allow_stopping_for_update = true
+
+# taint machine 
+terraform taint module.instances.google_compute_instance.tf-instance-2
