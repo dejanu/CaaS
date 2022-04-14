@@ -1,0 +1,17 @@
+
+## Collect Metrics from Exporters using the Managed Service for Prometheus
+
+```bash
+
+# create k8s GKE cluster
+gcloud beta container clusters create gmp-cluster --num-nodes=1 --zone us-central1-f --enable-managed-prometheus
+
+# get credentials
+gcloud container clusters get-credentials gmp-cluster --zone=us-central1-f
+
+# create namespace
+kubectl create ns gmp-test
+
+# deploy an app which exposes metrics (3 replicas)
+kubectl -n gmp-test apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/prometheus-engine/v0.2.3/examples/example-app.yaml
+```

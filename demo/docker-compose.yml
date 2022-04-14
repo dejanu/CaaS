@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+  prom_web:
+    image: "dejanualex/prom_web:1.0"
+    ports:
+      - "8000:8000"
