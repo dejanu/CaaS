@@ -1,17 +1,22 @@
-# Standalone start app
+# Python app that exposes prometheus metrics
+
+
+* Standalone `app.py`
+
+ ```bash
+export FLASK_APP=hello_app
+flask run --host=0.0.0.0
+```
+* Client library [prometheus](https://github.com/prometheus/client_python)
+
+Exposes the following metrics on port :5000/metrics: `view_total` adn `buy_total`
+
+* Containerizing the app
 
 ```bash
-# install dependecies
-pip3 install flask
-pip3 install prometheus-client
+# build the image
+docker build -t dejanualex/prometheus-flask:1.0 .
 
-# start flask server
-export FLASK_APP=app
-python -m flask run
-
-# start prometheus app
-python demo_prom.py
-
-# build local docker image
-docker build  -f demo/Dockerfile_demo_prom -t dejanualex/prom_web:1.0 .
+# run the image
+docker run -p 8080:5000 dejanualex/prometheus-flask:1.0
 ```
