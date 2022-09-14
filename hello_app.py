@@ -9,7 +9,7 @@ buy_metric = Counter('buy', 'Product buy', ['product'])
 
 @app.route('/')
 def hello():
-    return '<p> Hello demooo </p>'
+    return '<p> Hello demooo app </p>'
 
 @app.route('/view/<id>')
 def view_product(id):

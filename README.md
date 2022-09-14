@@ -5,11 +5,14 @@
 
  ```bash
 export FLASK_APP=hello_app
+
+# default port 5000
 flask run --host=0.0.0.0
 ```
+
 * Client library [prometheus](https://github.com/prometheus/client_python)
 
-Exposes the following metrics on port :5000/metrics: `view_total` adn `buy_total`
+Exposes the following metrics on port :5000/metrics: `view_total` and `buy_total`
 
 * Containerizing the app
 
