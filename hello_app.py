@@ -1,5 +1,11 @@
-from flask import Flask
+#!/usr/bin/env python
+# encoding: utf-8
+
+from crypt import methods
+from flask import request, jsonify, Flask, render_template
 from prometheus_client import Counter, generate_latest
+
+import platform
 
 app = Flask(__name__)
 
@@ -7,9 +13,10 @@ app = Flask(__name__)
 view_metric = Counter('view', 'Product view', ['product'])
 buy_metric = Counter('buy', 'Product buy', ['product'])
 
-@app.route('/')
+@app.route('/', methods=["GET"])
 def hello():
-    return '<p> Hello demooo app </p>'
+    """homepage"""
+    return render_template("index.html", machine_info=platform.uname())
 
 @app.route('/view/<id>')
 def view_product(id):
