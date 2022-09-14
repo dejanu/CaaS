@@ -1,8 +1,12 @@
 FROM python:3.7-alpine
-WORKDIR /code
+WORKDIR /app
+# We copy just the requirements.txt first to leverage Docker cache
+COPY ./requirements.txt /app/requirements.txt
+
 ENV FLASK_APP=hello_app
 ENV FLASK_RUN_HOST=0.0.0.0
-COPY . /code
+
+COPY . /app
 RUN pip install -r requirements.txt
 EXPOSE 5000
 COPY . .
