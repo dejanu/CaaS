@@ -1,6 +1,6 @@
 FROM python:3.7-alpine
 WORKDIR /app
-# We copy just the requirements.txt first to leverage Docker cache
+#  copy just the requirements.txt first to leverage Docker cache
 COPY ./requirements.txt /app/requirements.txt
 
 ENV FLASK_APP=hello_app

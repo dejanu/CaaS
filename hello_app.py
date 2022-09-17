@@ -13,10 +13,12 @@ app = Flask(__name__)
 view_metric = Counter('view', 'Product view', ['product'])
 buy_metric = Counter('buy', 'Product buy', ['product'])
 
+endpoints=["/<product>/view","/<product>/buy"]
+
 @app.route('/', methods=["GET"])
 def hello():
     """homepage"""
-    return render_template("index.html", machine_info=platform.uname())
+    return render_template("index.html", machine_info=platform.uname(),endpoints=endpoints)
 
 @app.route('/view/<id>')
 def view_product(id):

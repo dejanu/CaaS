@@ -4,10 +4,10 @@
 
 ```bash
 
-# create k8s GKE cluster
+# create k8s GKE cluster using FLAG for managed-prometheus
 gcloud beta container clusters create gmp-cluster --num-nodes=1 --zone us-central1-f --enable-managed-prometheus
 
-# get credentials
+# get credentials for cluster
 gcloud container clusters get-credentials gmp-cluster --zone=us-central1-f
 
 # create namespace
@@ -18,10 +18,28 @@ kubectl -n gmp-test apply -f https://raw.githubusercontent.com/GoogleCloudPlatfo
 ```
 ---
 
+# Managed Service for Prometheus
+```bash
+#PodMonitoring custom resources (CRs).
+
+apiVersion: monitoring.googleapis.com/v1alpha1
+kind: PodMonitoring
+metadata:
+  name: prom-example
+spec:
+  selector:
+    matchLabels:
+      app: prom-example
+  endpoints:
+  - port: metrics
+    interval: 30s
+```
+
+---
+
 # Migrate existing Prometheus monitoring workloads to GCP
 
 ```bash
-
 # get project ID e.g qwiklabs-gcp-00-5df9517dbcd0
 gcloud config get-value project
 
