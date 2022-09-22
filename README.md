@@ -1,4 +1,4 @@
-# Python app that exposes prometheus metrics
+# Python app Custom Exporter exposes prometheus metrics
 
 * Standalone `app.py`
 
