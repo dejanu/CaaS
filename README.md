@@ -13,7 +13,7 @@ flask run --host=0.0.0.0
 
 Exposes the following metrics on port :5000/metrics: `view_total` and `buy_total`
 
-* Containerizing the app
+* Containerizing the app:
 
 ```bash
 # build the image
