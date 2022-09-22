@@ -1,6 +1,5 @@
 # Python app that exposes prometheus metrics
 
-
 * Standalone `app.py`
 
  ```bash
