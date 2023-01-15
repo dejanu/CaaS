@@ -18,12 +18,12 @@ app = Flask(__name__)
 app.config["DEBUG"] = True
 
 # endpoint list used in index.htlm
-endpoints_list = ["/encrypt?message=HelloWorld&algorithm=A-K","/view/<id>","/buy/<id>", "/metrics"]
+endpoints_list = ["/encrypt?message=HelloWorld&algorithm=A-K","/view/<algo>","/buy/<algo>", "/metrics"]
 
 @app.route('/', methods = ['GET'])
 def index():
     """ homepage """
-    return render_template("index.html", machine_info=platform.uname(), endpoints=endpoints_list)
+    return render_template("index.html", machine_info=platform.uname()._asdict(), endpoints=endpoints_list)
 
 @app.route('/encrypt', methods = ['GET','POST'])
 def encrypt_msg():
@@ -58,14 +58,21 @@ def encrypt_msg():
 @app.route('/view/<id>')
 def view_product(id):
     #view_metric.inc()
+    
     view_metric.labels(product=id).inc()
-    return '<p> View product {} </p>'.format(id)
+    return render_template("view.html", algo=id)
+    # return '<br> <p> View aglo: <b> {} </b> </p>'.format(id)
+    
 
 @app.route('/buy/<id>')
 def buy_product(id):
     #buy_metric.inc()
+    
     buy_metric.labels(product=id).inc()
-    return '<p> Buy product {} </p>'.format(id)
+    return render_template("buy.html", algo=id)
+    # return '<br> <p> Buy aglo: <b> {} </b> </p>'.format(id)
+    
+ 
 
 @app.route('/metrics')
 def metrics():

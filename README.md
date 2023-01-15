@@ -31,15 +31,12 @@ curl -X GET "http://127.0.0.1:5000/encrypt?message=salut&algorithm=A-K"
 
 * start web service on port 8080 
 ```bash
-docker run -p 8080:5000 dejanualex/flask_api:v2
-docker run -p 8080:5000 alexdejanu/simpleapi:1.0
-```
-* Containerizing the app:
-
-```bash
 # build the image
-docker build -t dejanualex/prometheus-flask:1.0 .
+docker build -t dejanualex/encryptapi:<TAG> .
 
-# run the image
-docker run -p 8080:5000 dejanualex/prometheus-flask:1.0
+# web service without metrics
+docker run -p 8080:5000 dejanualex/encryptapi:1.0
+
+# web service with metrics
+docker run -p 8080:5000 dejanualex/encryptapi:2.0
 ```
