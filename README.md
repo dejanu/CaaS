@@ -14,6 +14,12 @@ Returns the system properties
 * /encrypt?message=<MESSAGE_HERE>&algorithm=<ALGO_HERE>  
 Encrypts the string message:
 
+* /view/<algo>
+
+* /buy/<algo>
+
+* /metrics
+
 * CLI usage:
 ```bash   
 # POST request
