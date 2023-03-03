@@ -46,3 +46,7 @@ docker run -p 8080:5000 dejanualex/encryptapi:1.0
 # web service with metrics
 docker run -p 8080:5000 dejanualex/encryptapi:2.0
 ```
+-------------
+
+# Deploy a Python (Flask) web app to Azure App Service - Sample Application
+
