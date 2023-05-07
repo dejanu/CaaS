@@ -1,6 +1,10 @@
 # Start flask server:
 ```bash
+# start app on port 5555
 python app.py
+
+# start app on port 5555
+export FLASK_RUN_PORT=5555
 flask run
 ```
 # Containerized app:
