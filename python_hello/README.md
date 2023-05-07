@@ -1,12 +1,13 @@
-# miniature-lamp
-hello app python
-
 # Start flask server:
-`python app.py`
-
-# Build image:
 ```bash
-docker build -t dejanu/hell_python:1 .
+python app.py
+flask run
+```
+# Containerized app:
+```bash
+docker build -t dejanu/python_hello:1.0 .
+
+docker run -d -p 5555:5555 dejanu/python_hello:1.0
 
 # set credentials
 gcloud auth configure-docker
@@ -18,6 +19,3 @@ docker tag gcr.io/google-samples/hello-app:1.0 gcr.io/PROJECT_ID/quickstart-imag
 docker push gcr.io/PROJECT_ID/quickstart-image:tag1
 ```
 
-
-# Start container:
-`docker run -d -p 5555:5555 dejanu/hell_python:1`
