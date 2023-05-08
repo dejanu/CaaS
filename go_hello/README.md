@@ -1,5 +1,6 @@
 # Start go server:
 ```bash
+# Start app on port 8080
 go run main.go
 # Compile app to execute it as binary:
 go build main.go

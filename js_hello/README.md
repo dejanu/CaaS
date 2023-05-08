@@ -1,5 +1,6 @@
 # Start node server:
 ```bash
+# start app on port 8080
 node server.js
 ```
 
