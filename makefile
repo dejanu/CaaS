@@ -5,7 +5,7 @@ documentation:
 	@echo "make clean"
 	@echo "make stats"
 	@echo "make apps"
-	@echo "make airgapped"
+	@echo "make ag"
 info:
 	@echo "docker system info --format '{{ .DefaultRuntime }}'"
 	@echo "docker info -f '{{ .DockerRootDir}}'"
@@ -19,7 +19,7 @@ apps:
 	@echo "docker run -d -p 5000:5555 dejanu/python_hello:1.0"
 	@echo "docker run -d -p 8082:8080 dejanualex/node_hello:1.0"
 	@echo "docker run -d -p 8083:8080 dejanualex/go_hello:1.0"
-airgapped:
+ag:
 	@echo "docker save nginx:latest | gzip > nginx.tar.gz"
 	@echo "docker load -i nginx.tar.gz"
 	@echo "docker run --name nini -p 8080:80 nginx:latest"
