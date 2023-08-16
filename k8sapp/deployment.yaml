@@ -10,7 +10,8 @@ spec:                                    #C
       emptyDir: {}
   initContainers:
   - name: nginx-init                     #E
-    image: docker/whalesay
+    # image: docker/whalesay
+    image: dejanualex/dockersay:1.0
     command: [sh, -c]
     args: [echo "<pre>$(cowsay -b 'Hello Kubernetes')</pre>" > /data/index.html]
     volumeMounts:                        
