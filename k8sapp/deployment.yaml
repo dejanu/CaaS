@@ -2,6 +2,7 @@ kind: Pod                                #A
 apiVersion: v1
 metadata:                                #B
   name: nginx
+  namespace: default
 spec:                                    #C
   restartPolicy: Always
   volumes:                               #D
