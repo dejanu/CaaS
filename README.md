@@ -1,6 +1,11 @@
 # CaaS
 HelloWorld boiler plates
 
+* Go app [app](https://github.com/dejanu/CaaS/blob/master/go_hello/README.md)
+* Node app [app](https://github.com/dejanu/CaaS/tree/master/js_hello/README.md)
+* Python app [app](https://github.com/dejanu/CaaS/blob/master/python_hello/README.md)
+
+
 # Build images:
 ```bash
 cd <app_dir>
