@@ -10,6 +10,9 @@ HelloWorld boiler plates
 ```bash
 cd <app_dir>
 docker build -t dejanu/<app>_hello:1.0 .
+
+# build from remote git repo (disable buildkit)
+docker build -t test https://github.com/dejanu/sretoolkit.git#container:docker --no-cache
 ```
 
 # Start containers:
