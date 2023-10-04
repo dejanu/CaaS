@@ -1,9 +1,10 @@
 .DEFAULT_GOAL := documentation
 
 documentation:
-	@echo "make imperative"
-	@echo "make declarative"
 	@echo "make flex"
+	@echo "make imperative"
+	@echo "make imperative_safe"
+	@echo "make declarative"
 
 
 flex:
@@ -11,5 +12,11 @@ flex:
 
 declarative:
 	@echo "kubectl apply -f deployment.yaml"
-imperative:
-	@echo "kubectl create deployment nginx-imperative --image=nginx:1.17.8 --replicas=2 --dry-run=client -oyaml"
+imperative_deploy:
+	@echo "kubectl create deployment webapp  --image=nginx:1.17.8 --replicas=2"
+imperative_safe:
+	@echo "kubectl create deployment webapp --image=nginx:1.17.8 --replicas=2 --dry-run=client -oyaml"
+imperative_service:
+	@echo "kubectl expose deploy webapp --name=webapp-svc --type="ClusterIP" --port=8080 --target-port=80"
+patch_service:
+	@echo "kubectl patch svc webapp-svc -p '{"spec": {"type": "LoadBalancer"}}'"
