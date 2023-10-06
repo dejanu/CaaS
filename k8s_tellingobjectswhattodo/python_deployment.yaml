@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-declarative
+  name: python-declarative
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: nginx
+      app: python
   minReadySeconds: 5
   template:
     metadata:
       labels:
-        app: nginx
+        app: python
     spec:
       containers:
-      - name: nginx
-        image: nginx:1.14.2
+      - name: python
+        image: dejanu/python_hello:1.1
         ports:
-        - containerPort: 80
+        - containerPort: 5555

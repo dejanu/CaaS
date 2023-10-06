@@ -9,10 +9,10 @@ COPY . /app
 
 # EXPOSE instruction will not actually publish the port
 # it functions as a type of documentation
-EXPOSE 5000
+EXPOSE 5555
 
 # # baked into the image
-# ENV FLASK_RUN_PORT=5555
+ENV FLASK_RUN_PORT=5555
 
 # # pass as env var at runtime
 # ENV FLASK_RUN_PORT=${FLASK_RUN_PORT}

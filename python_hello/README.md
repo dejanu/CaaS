@@ -10,19 +10,19 @@ flask run
 ```
 # Containerized app:
 ```bash
-docker build -t dejanu/python_hello:1.0 .
+docker build -t dejanualex/python_hello:1.0 .
 # port baked into image
-docker run --rm -p 5555:5555 dejanu/python_hello:1.0
+docker run --rm -p 5555:5555 dejanualex/python_hello:1.0
 
-docker build -t dejanu/python_hello:1.1 .
+docker build -t dejanualex/python_hello:1.1 .
 # port as env var
-docker run --rm -e FLASK_RUN_PORT=5554 -p 5554:5554 dejanu/python_hello:1.1
+docker run --rm -e FLASK_RUN_PORT=5554 -p 5554:5554 dejanualex/python_hello:1.1
 
 # build with args for port
-docker build --build-arg PORT=5553 -t dejanu/python_hello:1.2 .
-docker run --rm -p 5553:5553 dejanu/python_hello:1.2
+docker build --build-arg PORT=5553 -t dejanualex/python_hello:1.2 .
+docker run --rm -p 5553:5553 dejanualex/python_hello:1.2
 
 # cleanup
-docker rmi dejanu/python_hello:1.0 dejanu/python_hello:1.1 dejanu/python_hello:1.2
+docker rmi dejanualex/python_hello:1.0 dejanualex/python_hello:1.1 dejanualex/python_hello:1.2
 ```
 
