@@ -3,7 +3,7 @@
 mvn spring-boot:run
 ```
 
-# Build&Push image to gcr.io:
+# Containerized app:
 ```bash
 docker build -t dejanualex/java_hello:1.0 . --no-cache
 docker run --rm  -p 8080:8080 dejanualex/java_hello:1.0
