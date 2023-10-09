@@ -7,6 +7,7 @@ documentation:
 	@echo "make imperative_safe"
 	@echo "make naked_pod"
 	@echo "patch_service"
+	@echo "deploy_checks"
 
 flex:
 	@echo "kubectl get --raw "/apis/metrics.k8s.io/v1beta1/nodes" | jq .items[].usage"
@@ -22,3 +23,8 @@ naked_pod:
 	@echo "kubectl run curlopenssl -i --tty --image=dejanualex/curlopenssl:1.0 --rm -- sh"
 patch_service:
 	@echo "kubectl patch svc webapp-svc -p '{\"spec\": {\"type\": \"LoadBalancer\"}}'"
+deploy_checks:
+	@echo "kubectl rollout status deployment webapp"
+	@echo "kubectl rollout history deployment webapp"
+deploy_change_image:
+	@echo "kubectl set image deployment webapp webapp=dejanualex/python_hello:1.1"

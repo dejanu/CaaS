@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: python
-        image: dejanu/python_hello:1.1
+        image: dejanu/python_hello:1.0
         ports:
         - containerPort: 5555
