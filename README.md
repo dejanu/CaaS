@@ -31,3 +31,6 @@ docker run -d -p 8083:8080 dejanualex/go_hello:1.0
 ```bash
 podman pull docker.io/library/alpine:latest
 ```
+# `kubectl` plugins
+
+* [KubeDebugger](https://github.com/dejanu/KubeDebugger/blob/main/plugins/readme.md)
