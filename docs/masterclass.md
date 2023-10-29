@@ -1,3 +1,7 @@
+# Containers
+
+* `chroot` in [Unix](https://en.wikipedia.org/wiki/Version_7_Unix) version 7, 1979
+
 # Setup with kubectl
 
 * kubectl tool supports verb-driven commands for creating some of the most common object types.
@@ -71,8 +75,6 @@ kubectl rollout history deploy <deployment>
 
 * [kubectl getting started](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-strong-getting-started-strong-)
 * [kubectl cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
-
-
 
 https://kubernetes.io/training/
 https://kubernetes.io/docs/reference/

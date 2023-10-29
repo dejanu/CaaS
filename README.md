@@ -6,16 +6,13 @@ HelloWorld boiler plates
 * Python [app](https://github.com/dejanu/CaaS/blob/master/python_hello/README.md)
 * Java [app](https://github.com/dejanu/CaaS/blob/master/java_hello/README.md)
 
-# Build images:
+## Build images:
 ```bash
 cd <app_dir>
 docker build -t dejanu/<app>_hello:1.0 .
-
-# build from remote git repo (disable buildkit)
-docker build -t test https://github.com/dejanu/sretoolkit.git#container:docker --no-cache
 ```
 
-# Start containers:
+## Start containers:
 ```bash
 docker run -d -p 5000:5555 dejanualex/python_hello:1.0
 docker run -d -p 8082:8080 dejanualex/node_hello:1.0
@@ -31,6 +28,6 @@ docker run -d -p 8083:8080 dejanualex/go_hello:1.0
 ```bash
 podman pull docker.io/library/alpine:latest
 ```
-# `kubectl` plugins
+## Image for debugging:
 
 * [KubeDebugger](https://github.com/dejanu/KubeDebugger/blob/main/plugins/readme.md)
