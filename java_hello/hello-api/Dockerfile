@@ -3,6 +3,7 @@ WORKDIR /app
 COPY . .
 RUN mvn package -DskipTests
 
+# Separate build-time dependencies from runtime dependencies
 FROM openjdk:20
 WORKDIR /app
 COPY --from=build /app/target/hello-api-*.jar hello-api.jar
