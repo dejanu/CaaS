@@ -5,5 +5,4 @@ COPY . /app
 EXPOSE 8080
 ## bad 
 # CMD node server.js
-
 CMD ["node", "server.js"]
