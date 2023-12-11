@@ -21,6 +21,5 @@ ENV FLASK_RUN_PORT=5555
 # ARG PORT
 # ENV FLASK_RUN_PORT $PORT
 
-CMD "flask run --host=0.0.0.0"
-#CMD ["flask", "run", "--host=0.0.0.0"]
+CMD ["flask", "run", "--host=0.0.0.0"]
 
