@@ -37,12 +37,12 @@ curl -X GET "http://127.0.0.1:5000/encrypt?message=salut&algorithm=A-K"
 
 * start web service on port 8080 
 ```bash
-# build the image
+# build the image: x.1 for amd64 and 1.x for arm64
 docker build -t dejanualex/encryptapi:<TAG> .
 
-# web service without metrics
-docker run -p 8080:5000 dejanualex/encryptapi:1.0
+# web service without metrics 
+docker run -p 8080:5000 dejanualex/encryptapi:1.1
 
 # web service with metrics
-docker run -p 8080:5000 dejanualex/encryptapi:2.0
+docker run -p 8080:5000 dejanualex/encryptapi:2.1
 ```

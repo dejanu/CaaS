@@ -58,19 +58,18 @@ def encrypt_msg():
 @app.route('/view/<id>')
 def view_product(id):
     #view_metric.inc()
-    
     view_metric.labels(product=id).inc()
     return render_template("view.html", algo=id)
-    # return '<br> <p> View aglo: <b> {} </b> </p>'.format(id)
-    
 
+    # return '<br> <center><p> View aglo: <b> {} </b> </p><center>'.format(id)
+    
 @app.route('/buy/<id>')
 def buy_product(id):
-    #buy_metric.inc()
-    
+    #buy_metric.inc() 
     buy_metric.labels(product=id).inc()
     return render_template("buy.html", algo=id)
-    # return '<br> <p> Buy aglo: <b> {} </b> </p>'.format(id)
+
+    # return '<br> <center><p>Buy aglo: <b> {} </b> </p></p><center>'.format(id)
     
  
 
