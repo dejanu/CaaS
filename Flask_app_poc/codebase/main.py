@@ -71,8 +71,6 @@ def buy_product(id):
 
     # return '<br> <center><p>Buy aglo: <b> {} </b> </p></p><center>'.format(id)
     
- 
-
 @app.route('/metrics')
 def metrics():
     return generate_latest()
