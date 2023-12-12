@@ -25,6 +25,11 @@ def index():
     """ homepage """
     return render_template("index.html", machine_info=platform.uname()._asdict(), endpoints=endpoints_list)
 
+@app.route('/healtz', methods = ['GET'])
+def healtz():
+    """ healtz check """
+    return jsonify('{"status":"OK"}')
+
 @app.route('/encrypt', methods = ['GET','POST'])
 def encrypt_msg():
     """ # http://localhost:8080/encrypt?message=HelloWorld&algorithm=A-K """

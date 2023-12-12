@@ -20,6 +20,8 @@ Encrypts the string message:
 
 * /metrics
 
+* /healthz
+
 * CLI usage:
 ```bash   
 # POST request
@@ -45,4 +47,7 @@ docker run -p 8080:5000 dejanualex/encryptapi:1.1
 
 # web service with metrics
 docker run -p 8080:5000 dejanualex/encryptapi:2.1
+
+# naked pod
+kubectl run naked-pod --image=dejanualex/encryptapi:2.1 --port=5000
 ```
