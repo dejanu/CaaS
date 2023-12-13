@@ -39,14 +39,14 @@ curl -X GET "http://127.0.0.1:5000/encrypt?message=salut&algorithm=A-K"
 
 * start web service on port 8080 
 ```bash
-# build the image: x.1 for amd64 and 1.x for arm64
+# build the image: 2.x for amd64 and 1.x for arm64
 docker build -t dejanualex/encryptapi:<TAG> .
 
 # web service without metrics 
-docker run -p 8080:5000 dejanualex/encryptapi:1.1
+docker run -p 8080:5000 dejanualex/encryptapi:1.0
 
 # web service with metrics
-docker run -p 8080:5000 dejanualex/encryptapi:2.1
+docker run -p 8080:5000 dejanualex/encryptapi:1.1
 
 # naked pod
 kubectl run naked-pod --image=dejanualex/encryptapi:2.1 --port=5000
