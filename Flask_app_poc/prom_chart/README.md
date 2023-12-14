@@ -30,7 +30,8 @@ helm install [RELEASE_NAME] prometheus-community/prometheus
 # install from local directory
 helm install prometheus ./prometheus
 # or install with a custom values file
-helm install -f prometheus.yaml prometheus ./prometheus
+helm install -f promvalues.yaml prometheus ./prometheus
+helm upgrade -f promvalues.yaml prometheus prometheus-community/prometheus
 ```
 
 _See [configuration](#configuration) below._
