@@ -1,8 +1,7 @@
-# set go runtime version
-FROM golang:1.16-alpine
+FROM golang:latest
 LABEL org.opencontainers.image.authors="dejanualex@gmail.com"
 WORKDIR /app
 COPY . /app
 RUN go build -o main .
-EXPOSE 8080
+EXPOSE 8888
 CMD ["/app/main"]
