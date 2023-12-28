@@ -1,5 +1,5 @@
 # Stage 1: Build the Go application
-FROM golang:1.16-alpine AS build
+FROM golang:1.21 AS build
 
 LABEL org.opencontainers.image.authors="dejanualex@gmail.com"
 WORKDIR /app
@@ -12,5 +12,5 @@ FROM alpine:3.14
 WORKDIR /app
 COPY --from=build /app/main /app/main
 
-EXPOSE 8080
-CMD ["/app/main"]
+EXPOSE 8888
+ENTRYPOINT ["/app/main"]
