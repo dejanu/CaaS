@@ -1,3 +1,3 @@
-module github.com/dejanualex/go_hello
+module example.com/demo
 
-go 1.21.1
+go 1.21.5
