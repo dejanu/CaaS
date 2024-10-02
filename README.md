@@ -24,4 +24,4 @@ docker run -d -p 8083:8080 dejanualex/go_hello:1.0
 
 * [KubeDebugger](https://github.com/dejanu/KubeDebugger/blob/main/plugins/readme.md)
 * [docker_engine.sh gist](https://gist.github.com/dejanu/b4e15c76851502660ec1d43d3018b9c0)
-* Debug [containers](https://github.com/dejanu/debug_containers)
+* [Debug containers](https://github.com/dejanu/debug_containers)
