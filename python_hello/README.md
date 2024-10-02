@@ -1,6 +1,6 @@
 # Start flask server:
 ```bash
-# start app on port 5555
+# start app on default port 5000
 python app.py
 
 # start app on port 5555
