@@ -1,5 +1,4 @@
 
-# Stage 1: Build the Go application
 FROM golang:1.21 AS build
 
 LABEL org.opencontainers.image.authors="dejanualex@gmail.com"
@@ -21,11 +20,6 @@ COPY --from=build /app/main /app/main
 # copy static dir
 COPY static /app/static
 
-# Optional:
-# To bind to a TCP port, runtime parameters must be supplied to the docker command.
-# But we can document in the Dockerfile what ports
-# the application is going to listen on by default.
-# https://docs.docker.com/reference/dockerfile/#expose
 EXPOSE 8888
 
 ENTRYPOINT ["/app/main"]
