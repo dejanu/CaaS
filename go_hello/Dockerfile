@@ -1,20 +1,23 @@
-# syntax=docker/dockerfile:1
-FROM golang:1.21
 
-# Set destination for COPY
+# Stage 1: Build the Go application
+FROM golang:1.21 AS build
+
+LABEL org.opencontainers.image.authors="dejanualex@gmail.com"
 WORKDIR /app
+COPY . /app
+RUN go mod init github.com/dejanualex/go_hello && go mod tidy
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
 
-# Download Go modules
-COPY go.mod ./
-RUN go mod download
+# Stage 2: Create a minimal runtime image
+FROM alpine:3.14
 
-# Copy the source code. Note the slash at the end, as explained in
-# https://docs.docker.com/reference/dockerfile/#copy
-COPY *.go ./
-COPY . .
+# Install necessary dependencies for Build
+RUN apk add --no-cache ca-certificates
 
-# Build
-RUN CGO_ENABLED=0 GOOS=linux go build -o /main
+WORKDIR /app
+COPY --from=build /app/main /app/main
+# copy static dir
+COPY static /app/static
 
 # Optional:
 # To bind to a TCP port, runtime parameters must be supplied to the docker command.
@@ -23,5 +26,4 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o /main
 # https://docs.docker.com/reference/dockerfile/#expose
 EXPOSE 8888
 
-# Run
-CMD ["/main"]
+ENTRYPOINT ["/app/main"]

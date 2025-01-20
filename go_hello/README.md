@@ -13,6 +13,10 @@ go build main.go
 go mod init github.com/dejanualex/go_hello
 
 docker build -t dejanualex/go_hello:1.0 .
+docker login docker.io
+docker push dejanualex/go_hello:1.0
+
+# run 
 docker run -d -p 8080:8888 dejanualex/go_hello:1.0
 ```
 
