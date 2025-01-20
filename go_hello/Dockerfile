@@ -4,7 +4,9 @@ FROM golang:1.21 AS build
 
 LABEL org.opencontainers.image.authors="dejanualex@gmail.com"
 WORKDIR /app
-COPY . /app
+
+COPY main.go /app
+# don't copy mod files to avoid cache invalidation
 RUN go mod init github.com/dejanualex/go_hello && go mod tidy
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
 
