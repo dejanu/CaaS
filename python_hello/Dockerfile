@@ -9,11 +9,9 @@ RUN --mount=type=bind,source=requirements.txt,target=/tmp/requirements.txt \
 COPY . /app
 
 # EXPOSE instruction will not actually publish the port: it functions as a type of documentation
-EXPOSE 5000
-
 ## baked into the image
-#EXPOSE 5555
-#ENV FLASK_RUN_PORT=5555
+EXPOSE 8888
+ENV FLASK_RUN_PORT=8888
 
 ## pass as env var at runtime: docker run 
 #ENV FLASK_RUN_PORT=${FLASK_RUN_PORT}

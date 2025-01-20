@@ -5,14 +5,14 @@ python app.py
 
 # start app on port 5555
 export FLASK_APP=main.py
-export FLASK_RUN_PORT=5555
+export FLASK_RUN_PORT=8888
 flask run
 ```
 # Containerized app:
 ```bash
 docker build -t dejanualex/python_hello:1.0 .
 # port baked into image
-docker run --rm -p 5555:5555 dejanualex/python_hello:1.0
+docker run --rm -p 5555:8888 dejanualex/python_hello:1.0
 
 docker build -t dejanualex/python_hello:1.1 .
 # port as env var
