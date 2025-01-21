@@ -1,4 +1,3 @@
-
 FROM golang:1.21 AS build
 
 LABEL org.opencontainers.image.authors="dejanualex@gmail.com"

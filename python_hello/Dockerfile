@@ -1,8 +1,9 @@
 FROM python:3-alpine
 
+LABEL org.opencontainers.image.authors="dejanualex@gmail.com"
 WORKDIR /app
 
-# bind mount instead since we don't need requirements
+# bind mount since we don't need requirements
 RUN --mount=type=bind,source=requirements.txt,target=/tmp/requirements.txt \
     pip install --no-cache-dir -r  /tmp/requirements.txt
 
