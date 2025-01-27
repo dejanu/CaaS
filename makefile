@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := documentation
 
 documentation:
-	@echo "startapp"
+	@echo "metrics"
 	@echo "buildapp"
 	@echo "nakepod"
 	@echo "imperative"
@@ -10,6 +10,9 @@ documentation:
 	@echo "curl_pod"
 	@echo "patch_service"
 	@echo "rollout"
+
+metrics:
+	@echo "kubectl get --raw /apis/metrics.k8s.io/v1beta1/pods | jq .items[].containers[].usage"
 
 startapp::
 	@printf 'go run go_hello/main.go'
