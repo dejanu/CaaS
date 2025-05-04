@@ -7,19 +7,19 @@ import (
 )
 
 const (
-	port = ":5000"
+	port = ":8888"
 )
 
 func main() {
 	// /
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "<p><hr><center>Hello <b>GOPHER</b> 👾 </center></p>")
+		fmt.Fprintf(w, "<p><hr><center>Hello <b>GOPHER with COLOUR</b> 👾 </center></p>")
 		log.Printf("%s %s %s\n", r.RemoteAddr, r.Method, r.URL)
 	})
 
 	// /hi
 	http.HandleFunc("/hi", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "./static/gopher_dance.gif") // serve static file
+		http.ServeFile(w, r, "./static/gopher_party.gif") // serve static file
 		log.Printf("%s %s %s\n", r.RemoteAddr, r.Method, r.URL)
 	})
 
