@@ -6,10 +6,15 @@ import (
 	"net/http"
 )
 
+const (
+	port = ":5000"
+)
+
 func main() {
 	// /
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "<p><hr><center>Hello <b>GOPHER</b> 👾 </center></p>")
+		log.Printf("%s %s %s\n", r.RemoteAddr, r.Method, r.URL)
 	})
 
 	// /hi
@@ -18,6 +23,8 @@ func main() {
 		log.Printf("%s %s %s\n", r.RemoteAddr, r.Method, r.URL)
 	})
 
-	log.Println("Server started at localhost:8888")
-	log.Fatal(http.ListenAndServe(":8888", nil))
+	log.Printf("Starting server at http://localhost%s\n", port)
+	if err := http.ListenAndServe(port, nil); err != nil {
+		log.Fatalf("Server failed to start: %v\n", err)
+	}
 }
