@@ -11,8 +11,5 @@ COPY . /app
 # EXPOSE instruction will not actually publish the port: it functions as a type of documentation
 EXPOSE 5000
 
-# ENTRYPOINT ["python3"]
-# CMD ["app.py"]
-
 CMD ["python3", "app.py"]
 

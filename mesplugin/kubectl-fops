@@ -2,7 +2,7 @@
 
 # the script should output 3 choices to user
 echo "1. Vanilla ops" # create objects
-echo "2. Scratch ops" # build image
+echo "2. Scratch ops " # build image
 echo "3. Expose stuff"
 echo "4. Exit"
 echo "Please select an option (1-4):"
@@ -29,6 +29,7 @@ update_or_create_deployment() {
                 echo -e "\n--------------------------------" | lolcat
                 echo "🔎 Current image used by $deployment_name " | lolcat
                 kubectl get deployment "$deployment_name" -o jsonpath='{.spec.template.spec.containers[0].image}' | lolcat
+                echo -e "\n--------------------------------" | lolcat
                 kubectl rollout history deployment/"$deployment_name" | lolcat
             else
                 echo "Deployment $deployment_name does not exist. Exiting..."
@@ -36,7 +37,7 @@ update_or_create_deployment() {
             fi
             elif [[ $is_running == "n" ]]; then
             # create kubernetes deployment based on IMAGE_TAG
-            printf "\e[32mCreating Kubernetes deployment...$REPO_NAME\e[0m\n"
+            printf "\e[32mCreating Kubernetes deployment...$REPO_NAME with $IMAGE_TAG\e[0m\n"
             kubectl create deployment "$REPO_NAME" --image="$IMAGE_TAG"
             # wait for the deployment to be created
             kubectl rollout status deployment/"$REPO_NAME"
@@ -65,6 +66,8 @@ case $choice in
 
         ;;
     2)
+        afplay ~/Desktop/Git_projects/CaaS/mesplugin/chemin.m4a & disown
+
         # create tag for the image (foldername)
         printf "\e[32mEnter the repository name:\e[0m "
         read -r REPO_NAME
@@ -77,7 +80,6 @@ case $choice in
         TAG=${TAG:-0.1.0}
         IMAGE_TAG="$REGISTRY_REPO:$TAG"
 
-        afplay ~/Desktop/Git_projects/CaaS/mesplugin/chemin.m4a & disown
         if docker build -t "$IMAGE_TAG" "$REPO_NAME"; then
             echo "Build succeeded. Pushing image..."
             docker push "$IMAGE_TAG"
