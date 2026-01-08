@@ -11,16 +11,16 @@ COPY . /app
 
 # EXPOSE instruction will not actually publish the port: it functions as a type of documentation
 ## baked into the image
-#EXPOSE 8888
-#ENV FLASK_RUN_PORT=8888
+EXPOSE 8888
+ENV FLASK_RUN_PORT=8888
 
 ## pass as env var at runtime: docker run 
 #ENV FLASK_RUN_PORT=${FLASK_RUN_PORT}
 
 ## change the port at build time: docker build
 # ARG PORT
-ARG PORT=5000
-ENV FLASK_RUN_PORT=${PORT}
+#ARG PORT=5000
+#ENV FLASK_RUN_PORT=${PORT}
 
 ENTRYPOINT ["flask"]
 CMD ["run", "--host=0.0.0.0"]
