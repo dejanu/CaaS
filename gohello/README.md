@@ -12,10 +12,7 @@ go build main.go
 # to start a new module and avoid go: go.mod file not found in current directory or any parent directory
 go mod init github.com/dejanualex/gohello
 
-docker build -t dejanualex/gohello:1.0 .
-docker login docker.io
-docker push dejanualex/gohello:1.0
-
+docker buildx build --push --platform linux/amd64,linux/arm64 -f Dockerfile -t dejanualex/go-hello:1.0 .
 # run 
 docker run -d -p 8080:8888 dejanualex/gohello:1.0
 ```
